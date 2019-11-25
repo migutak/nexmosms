@@ -17,3 +17,7 @@ COPY . .
 
 EXPOSE 7000
 CMD [ "node", "index.js" ]
+
+# docker build -t migutak/nexmosms .
+# docker push migutak/nexmosms:latest
+# docker run -it -d -p 7000:7000 --name nexmosms migutak/nexmosms

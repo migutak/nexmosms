@@ -2,11 +2,6 @@ const Nexmo = require('nexmo');
 const bodyParser = require('body-parser');
 const express= require('express');
 
-const nexmo = new Nexmo({
-  apiKey: 'ac17ea64',
-  apiSecret: 't3bIhJXlI34d2ydY',
-}, {debug: true});
-
 // init app
 const app = express();
 app.use(bodyParser.json());
@@ -16,6 +11,11 @@ app.post('/', (req, res) => {
     const from = req.body.from
     const to = req.body.to;
     const text = req.body.text
+
+    const nexmo = new Nexmo({
+        apiKey: req.body.api_key,
+        apiSecret: req.body.api_secret,
+      }, {debug: true});
 
     nexmo.message.sendSms(from, to, text, (err, responseData) => {
         if(err) {
